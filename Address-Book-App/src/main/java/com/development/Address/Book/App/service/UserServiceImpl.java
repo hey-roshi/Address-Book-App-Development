@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,5 +49,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> saveAllUsers(List<UserDTO> userDTOList) {
+        // Convert UserDTO list to User list
+        List<User> users = userDTOList.stream()
+                .map(dto -> {
+                    User user = new User();
+                    user.setName(dto.getName());
+                    user.setAddress(dto.getAddress());
+                    user.setPincode(dto.getPincode());
+                    user.setPermanentAddress(dto.isPermanentAddress());
+                    return user;
+                })
+                .collect(Collectors.toList());
+
+        // Save all users to the database
+        return userRepository.saveAll(users);
     }
 }
