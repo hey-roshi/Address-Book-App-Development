@@ -5,6 +5,8 @@ import com.development.Address.Book.App.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.development.Address.Book.App.dto.UserDTO;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -31,18 +33,25 @@ public class AddressBookController {
 
     // POST create user
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setAddress(userDTO.getAddress());
+        user.setPincode(userDTO.getPincode());
+        user.setPermanentAddress(userDTO.isPermanentAddress());
         return ResponseEntity.ok(userRepository.save(user));
     }
 
     // PUT update user by ID
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setName(userDetails.getName());
-            user.setEmail(userDetails.getEmail());
+            user.setName(userDTO.getName());
+            user.setAddress(userDTO.getAddress());
+            user.setPincode(userDTO.getPincode());
+            user.setPermanentAddress(userDTO.isPermanentAddress());
             return ResponseEntity.ok(userRepository.save(user));
         } else {
             return ResponseEntity.notFound().build();
