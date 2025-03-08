@@ -1,6 +1,7 @@
 package com.development.Address.Book.App.service;
 
 import com.development.Address.Book.App.dto.UserDTO;
+import com.development.Address.Book.App.exception.AddressBookNotFoundException;
 import com.development.Address.Book.App.model.User;
 import com.development.Address.Book.App.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -25,12 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        log.info("Fetching user by ID: {}", id); // Logging
         return userRepository.findById(id)
-                .orElseThrow(() -> {
-                    log.error("User not found with ID: {}", id); // Logging for error
-                    return new RuntimeException("User not found");
-                });
+                .orElseThrow(() -> new AddressBookNotFoundException("User not found with ID: " + id));
     }
 
     @Override

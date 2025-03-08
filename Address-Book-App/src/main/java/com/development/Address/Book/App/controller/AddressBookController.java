@@ -1,6 +1,7 @@
 package com.development.Address.Book.App.controller;
 
 import com.development.Address.Book.App.dto.UserDTO;
+import com.development.Address.Book.App.exception.AddressBookNotFoundException;
 import com.development.Address.Book.App.model.User;
 import com.development.Address.Book.App.service.UserService;
 import jakarta.validation.Valid;
@@ -17,6 +18,10 @@ public class AddressBookController {
 
     @Autowired
     private UserService userService;
+    @ExceptionHandler(AddressBookNotFoundException.class)
+    public ResponseEntity<String> handleAddressBookNotFoundException(AddressBookNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
     // GET all users
     @GetMapping
