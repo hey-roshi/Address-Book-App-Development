@@ -1,0 +1,27 @@
+2025-03-08T12:22:39.920+05:30 ERROR 2652 --- [Address-Book-App] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.com.development' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.com.development
+    Value: "DEBUG # Update this to your package name"
+    Origin: class path resource [application.properties] - 14:31
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel.DEBUG # Update this to your package name)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
