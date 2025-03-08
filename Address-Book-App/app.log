@@ -34,3 +34,35 @@
 2025-03-08T11:27:22.182+05:30  INFO 24324 --- [Address-Book-App] [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-03-08T11:27:22.188+05:30  INFO 24324 --- [Address-Book-App] [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
 2025-03-08T11:28:29.771+05:30  INFO 24324 --- [Address-Book-App] [http-nio-9090-exec-6] c.d.A.Book.App.service.UserServiceImpl   : Fetching all users
+2025-03-08T12:06:48.369+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] c.d.A.B.App.AddressBookAppApplication    : Starting AddressBookAppApplication using Java 21.0.2 with PID 24172 (C:\Users\RC\Desktop\Address Book\Address-Book-App\target\classes started by RC in C:\Users\RC\Desktop\Address Book\Address-Book-App)
+2025-03-08T12:06:48.374+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] c.d.A.B.App.AddressBookAppApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-03-08T12:06:48.498+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-08T12:06:48.498+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-08T12:06:49.618+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-08T12:06:49.715+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 1 JPA repository interface.
+2025-03-08T12:06:50.555+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-03-08T12:06:50.575+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-08T12:06:50.576+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-08T12:06:50.638+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-08T12:06:50.639+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2140 ms
+2025-03-08T12:06:50.888+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-08T12:06:50.975+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-08T12:06:51.102+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-08T12:06:51.566+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-08T12:06:51.603+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-08T12:06:52.239+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71d56685
+2025-03-08T12:06:52.242+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-08T12:06:52.363+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-08T12:06:53.315+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-08T12:06:53.384+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-08T12:06:53.754+05:30  WARN 24172 --- [Address-Book-App] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-08T12:06:54.260+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-08T12:06:54.303+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-03-08T12:06:54.317+05:30  INFO 24172 --- [Address-Book-App] [restartedMain] c.d.A.B.App.AddressBookAppApplication    : Started AddressBookAppApplication in 6.84 seconds (process running for 7.69)
