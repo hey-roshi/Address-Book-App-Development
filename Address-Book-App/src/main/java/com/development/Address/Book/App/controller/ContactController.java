@@ -19,32 +19,66 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
-    @PostMapping("/create")
-    public ResponseEntity<Contact> createEntry(@Valid @RequestBody ContactDTO dto) {
-        Contact addressBook = contactService.createAddressBookEntry(dto);
-        return ResponseEntity.ok(addressBook);
+    @PostMapping
+    public ResponseEntity<?> createEntry(@Valid @RequestBody ContactDTO dto) {
+        try {
+            Contact contact = contactService.createAddressBookEntry(dto);
+            return ResponseEntity.ok(contact);
+        } catch (Exception e) {
+            log.error("Error creating contact: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error creating contact: " + e.getMessage());
+        }
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Contact>> getAllEntries() {
-        return ResponseEntity.ok(contactService.getAllEntries());
+    @GetMapping
+    public ResponseEntity<?> getAllEntries() {
+        try {
+            List<Contact> contacts = contactService.getAllEntries();
+            return ResponseEntity.ok(contacts);
+        } catch (Exception e) {
+            log.error("Error fetching contacts: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error fetching contacts: " + e.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Contact> getEntryById(@PathVariable Long id) {
-        Contact addressBook = contactService.getEntryById(id);
-        return (addressBook != null) ? ResponseEntity.ok(addressBook) : ResponseEntity.notFound().build();
+    public ResponseEntity<?> getEntryById(@PathVariable Long id) {
+        try {
+            Contact contact = contactService.getEntryById(id);
+            if (contact == null) {
+                log.warn("Contact with ID {} not found", id);
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(contact);
+        } catch (Exception e) {
+            log.error("Error fetching contact with ID {}: {}", id, e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error fetching contact: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Contact> updateEntry(@PathVariable Long id, @Valid @RequestBody ContactDTO dto) {
-        Contact updatedEntry = contactService.updateEntry(id, dto);
-        return (updatedEntry != null) ? ResponseEntity.ok(updatedEntry) : ResponseEntity.notFound().build();
+    public ResponseEntity<?> updateEntry(@PathVariable Long id, @Valid @RequestBody ContactDTO dto) {
+        try {
+            Contact updatedContact = contactService.updateEntry(id, dto);
+            if (updatedContact == null) {
+                log.warn("Failed to update contact with ID {}", id);
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(updatedContact);
+        } catch (Exception e) {
+            log.error("Error updating contact with ID {}: {}", id, e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error updating contact: " + e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEntry(@PathVariable Long id) {
-        contactService.deleteEntry(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteEntry(@PathVariable Long id) {
+        try {
+            contactService.deleteEntry(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            log.error("Error deleting contact with ID {}: {}", id, e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Error deleting contact: " + e.getMessage());
+        }
     }
 }

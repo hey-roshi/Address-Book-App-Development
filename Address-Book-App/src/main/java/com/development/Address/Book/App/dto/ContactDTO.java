@@ -1,5 +1,4 @@
 package com.development.Address.Book.App.dto;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -11,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContactDTO {
-
 
     @NotBlank(message = "Name cannot be blank")
     private String name;
