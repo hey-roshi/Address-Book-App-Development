@@ -1,17 +1,23 @@
 package com.development.Address.Book.App.dto;
+
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class UserDTO {
+    @NotBlank(message = "First name is required")
+    private String firstName;
 
-    @NotBlank(message = "Name is required") // Name cannot be empty
-    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
-    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Name can only contain letters and spaces")
-    private String name;
-    private String address;
-    private int pincode;
-    private boolean isPermanentAddress;
+    @NotBlank(message = "Last name is required")
+    private String lastName;
+
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
+    private String email;
+
+    @NotBlank(message = "Password is required")
+    private String password;
 }
