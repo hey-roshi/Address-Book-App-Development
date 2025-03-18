@@ -26,7 +26,7 @@ public class SecurityConfig {
                                 "/auth/forgotPassword/{email}", "/auth/resetPassword/{email}", "/error").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/contacts/**").permitAll()  // Require authentication
-                        .requestMatchers("/sendMessage").permitAll()
+                        .requestMatchers("/sendMessage").permitAll() //for RabbitMQ
                         .anyRequest().authenticated()
                 )
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
