@@ -1,4 +1,5 @@
 package com.development.Address.Book.App.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -23,6 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register", "/auth/login",
                                 "/auth/forgotPassword/{email}", "/auth/resetPassword/{email}","/error").permitAll()
+                        .requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
