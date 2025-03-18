@@ -9,7 +9,10 @@ import org.springframework.http.ResponseEntity;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
+import static io.lettuce.core.pubsub.PubSubOutput.Type.message;
 
 @Slf4j
 @RestController
@@ -80,5 +83,8 @@ public class ContactController {
             log.error("Error deleting contact with ID {}: {}", id, e.getMessage(), e);
             return ResponseEntity.internalServerError().body("Error deleting contact: " + e.getMessage());
         }
+
+
+
     }
 }
