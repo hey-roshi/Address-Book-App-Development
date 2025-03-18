@@ -36,8 +36,8 @@ class ContactServiceTest {
 
     @BeforeEach
     void setUp() {
-        contact = new Contact(1L, "Rashi", "rashia729@gmail.com", "9696078456");
-        contactDTO = new ContactDTO("Rashi", "rashia729@gmail.com", "9696078456");
+        contact = new Contact(1L, "Roshi", "srivastavaroshi00@gmail.com", "6386196707");
+        contactDTO = new ContactDTO("Roshi", "srivastavaroshi00@gmail.com", "6386196707");
     }
 
     @Test
@@ -45,7 +45,7 @@ class ContactServiceTest {
         when(contactRepository.save(any(Contact.class))).thenReturn(contact);
         Contact createdContact = contactService.createAddressBookEntry(contactDTO);
         assertNotNull(createdContact);
-        assertEquals("Rashi", createdContact.getName());
+        assertEquals("Roshi", createdContact.getName());
     }
 
     @Test
@@ -61,7 +61,7 @@ class ContactServiceTest {
         when(contactRepository.findById(1L)).thenReturn(Optional.of(contact));
         Contact retrievedContact = contactService.getEntryById(1L);
         assertNotNull(retrievedContact);
-        assertEquals("Rashi", retrievedContact.getName());
+        assertEquals("Roshi", retrievedContact.getName());
     }
 
     @Test
